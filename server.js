@@ -7,9 +7,7 @@ var crypto      = require('crypto');
 var rmdir       = require('rimraf');
 
 var server = express();
-// Enable request body parsing
-server.use(express.json());
-server.use(express.urlencoded());
+server.use(express.bodyParser());
 
 // The POST handler (the incoming request has a JSON object with the SVG to convert)
 server.post('/export', function(request, response){
