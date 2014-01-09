@@ -13,7 +13,7 @@ server.use(express.bodyParser());
 server.post('/export', function(request, response){
 
     var exportRequest   = request.body;
-    var processingDir   = crypto.createHash('md5').update(Date().toString()+exportRequest.svg).digest('hex') + '/';
+    var processingDir   = __dirname + '/' + crypto.createHash('md5').update(Date().toString()+exportRequest.svg).digest('hex') + '/';
 
     // Exports chart and hands the exported chart to the callback
     var exportChart = function(callback){
