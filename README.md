@@ -25,11 +25,11 @@ nhe.exportChart(nhe.exportChart(highchartsExportRequest, function(error, exporte
   In your client-side Higcharts code:
 ```js
 new Highcharts.Chart({
-    \\ some chart options
+    // some chart options
     exporting:{
         url: 'http://localhost:3000/export'
     }
-    \\ more chart options
+    // more chart options
 };
 ```
 
@@ -41,7 +41,7 @@ new Highcharts.Chart({
     $ npm install; // Installs demo dependencies
     $ node server.js;
 
-  Now open `example/demo.html` in the browser and export the demo chart.
+  Now open `example/demo.html` in the browser and export the demo chart to any format.
 
 
 
@@ -53,12 +53,12 @@ new Highcharts.Chart({
 
 ## Limitations
 
-    * Handles only SVG, not JSON for rendering server-side like other solutions out there.
-    * Does exporting a quick and dirty way by converting everything that is not SVG to PNG first then to PDF or JPEG.
+* Handles only SVG, not JSON for rendering server-side like other solutions out there.
+* Does exporting a quick and dirty way by converting everything that is not SVG to PNG first then to PDF or JPEG.
 
 ## To-dos
 
-    * Write tests of some sort
-    * Enable a logging scheme
-    * General refactoring, especially to prevent an error in one request stabbing the server in the neck.
-    * Investigate JSON-based server-side rendering as an option
+* Write tests of some sort
+* Enable a logging scheme
+* General refactoring, especially to prevent an error in one request stabbing the server in the neck.
+* Investigate JSON-based server-side rendering as an option
