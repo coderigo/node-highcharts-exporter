@@ -33,6 +33,18 @@ new Highcharts.Chart({
 };
 ```
 
+## Demo
+
+  Start a server:
+
+    $ cd example;
+    $ npm install; // Installs demo dependencies
+    $ node server.js;
+
+  Now open `example/demo.html` in the browser and export the demo chart.
+
+
+
 ## Installation
 
   One of its dependencies is *netpbm utilities*. As described by [node-netpbm](https://npmjs.org/package/netpbm), this needs some minor setup outside of `npm` and node. On OSX, a simple `brew install netpbm` took care of the installation. After that, you can proceed to:
