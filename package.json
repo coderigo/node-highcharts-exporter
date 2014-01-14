@@ -19,7 +19,7 @@
     "export",
     "node"
   ],
-  "author": "Rodrigo Martell",
+  "author": "Rodrigo Martell <rodrigo.martell@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/coderigo/node-highcharts-exporter/issues"
