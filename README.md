@@ -1,14 +1,14 @@
 node-highcharts-exporter
 ========================
 
-  A basic [Node.js](http://nodejs.org) [Highcharts](http://www.highcharts.com/) export server converting SVG into PDF, PNG, or JPEG. It is intended to simply convert the SVG Highcharts sends the server on chart export into any of the formats: `svg, jpeg, png, or pdf`.
+  A basic [Node.js](http://nodejs.org) [Highcharts](http://www.highcharts.com/) export server converting the SVG sent by Highcharts's [export module](http://www.highcharts.com/docs/export-module/export-module-overview) into `svg` (i.e. unaltered), `jpeg, png, or pdf`.
 
 ## Usage
 
   In your node app file:
 ```js
 var nhe = require('node-highcharts-exporter');
-nhe.exportChart(nhe.exportChart(highchartsExportRequest, function(error, exportedChartInfo){
+nhe.exportChart(highchartsExportRequest, function(error, exportedChartInfo){
     // error, if defined returns an error object with a 'message' property
     //
     // exportedChartInfo, is an object with the following structure:
