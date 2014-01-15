@@ -1,6 +1,6 @@
 {
   "name": "node-highcharts-exporter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A basic Node.js Highcharts export server",
   "main": "lib/node-highcharts-exporter/main.js",
   "directories": {
