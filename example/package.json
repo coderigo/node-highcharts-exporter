@@ -12,6 +12,6 @@
   "dependencies": {
     "rimraf": "~2.2.5",
     "express": "~3.4.8",
-    "node-highcharts-exporter" : "~0.0.0"
+    "node-highcharts-exporter" : ">=0.0.3"
   }
 }

@@ -6,20 +6,15 @@ node-highcharts-exporter
 ## Usage
 
   In your node app file:
+
 ```js
 var nhe = require('node-highcharts-exporter');
 nhe.exportChart(highchartsExportRequest, function(error, exportedChartInfo){
-    // error, if defined returns an error object with a 'message' property
-    //
-    // exportedChartInfo, is an object with the following structure:
-    //
-    //  {
-    //      fileName  : 'myChart',
-    //      file      : 'myChart.png',
-    //      type      : 'png',
-    //      parentDir : 'directory/holding/chart/',
-    //      filePath  : 'directory/holding/chart/myChart.png'
-    //  }
+    if(error){
+        console.log('Uh oh!',error.message);
+    } else{
+        console.log('Exported chart. Here are the deets:', exportedChartInfo);
+    }
 });
 ```
   In your client-side Higcharts code:
@@ -44,12 +39,39 @@ new Highcharts.Chart({
   Now open `example/demo.html` in the browser and export the demo chart to any format.
 
 
-
 ## Installation
 
   One of its dependencies is *netpbm utilities*. As described by [node-netpbm](https://npmjs.org/package/netpbm), this needs some minor setup outside of `npm` and node. On OSX, a simple `brew install netpbm` took care of the installation. After that, you can proceed to:
 
     $ npm install -g node-highcharts-exporter
+
+## Methods
+
+  * **exportChart(exportRequest, callback)**: `exportRequest` is the request POSTed by Highcharts as described [here](http://www.highcharts.com/docs/export-module/export-module-overview). `callback` is a function with two parameters `error` and `exportedChartInfo` as below:
+
+```js
+    // error object
+    {
+        message : 'Some error'
+    }
+
+    // exportedChartInfo object
+    {
+        fileName  : 'myChart',     // The name of the chart
+        file      : 'myChart.png', // The name of the chart plus its extension
+        type      : 'png',         // The type of file (png,svg,pdf,jpeg)
+        parentDir : 'path/to/processingDir/requestHash', // The directory where the file has been stored
+        filePath  : 'path/to/processingDir/exportRequestHash/myChart.png' // Absolute path to exported chart
+    }
+```
+
+  * **config.set(configPropertyName, configPropertyValue)** and **config.get()**: Setter and getter for config object. The getter returns the entire config object. At the moment, the config object is simply:
+
+```js
+    {
+        processingDir : 'defaults/to/directory/of/this/module' // If doesn't exist, will be created.
+    }
+```
 
 ## Limitations
 
@@ -58,7 +80,7 @@ new Highcharts.Chart({
 
 ## To-dos
 
-* Write tests of some sort
-* Enable a logging scheme
-* General refactoring, especially to prevent an error in one request stabbing the server in the neck.
+* Handle chart sizes neatly to fit into PDF (if too big at the moment they'll get truncated)
+* Make an `exportChartSync`
+* Enable a logging scheme (?)
 * Investigate JSON-based server-side rendering as an option
