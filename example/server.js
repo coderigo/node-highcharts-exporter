@@ -1,6 +1,6 @@
 // Ye-olde requires
 var express = require('express'),
-    nhe     = require('../lib/node-highcharts-exporter/main.js'),
+    nhe     = require('node-highcharts-exporter'),
     rmdir   = require('rimraf'),
     server  = express(),
     fs      = require('fs');
