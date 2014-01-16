@@ -1,11 +1,16 @@
 // Ye-olde requires
 var express = require('express'),
-    nhe     = require('node-highcharts-exporter'),
+    nhe     = require('../lib/node-highcharts-exporter/main.js'),
     rmdir   = require('rimraf'),
-    server  = express();
+    server  = express(),
+    fs      = require('fs');
 
 // Enable request body parsing
 server.use(express.bodyParser());
+
+// Set a custom directory to export charts to
+var customExportPath = require('path').dirname(require.main.filename) + '/exported_charts';
+nhe.config.set('processingDir', customExportPath);
 
 // The POST handler
 // The incoming request has a JSON object with the SVG to convert
