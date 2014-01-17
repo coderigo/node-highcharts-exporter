@@ -1,3 +1,5 @@
+'use strict';
+
 // Ye-olde requires
 var express = require('express'),
     nhe     = require('node-highcharts-exporter'),
