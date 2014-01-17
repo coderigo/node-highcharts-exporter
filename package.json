@@ -25,6 +25,7 @@
     "url": "https://github.com/coderigo/node-highcharts-exporter/issues"
   },
   "devDependencies": {
+    "jasmine-node" : "1.12.0",
     "grunt": "0.4.2",
     "grunt-cli": "0.1.11",
     "grunt-contrib-jshint": "0.6.4",
