@@ -1,0 +1,5 @@
+{
+    "testProcessingDir"        : "./tests/test_exports",
+    "defaultProcessingDirName" : "highcharts_exports",
+    "mainPath"                 : "../lib/node-highcharts-exporter/main.js"
+}

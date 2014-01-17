@@ -24,6 +24,12 @@
   "bugs": {
     "url": "https://github.com/coderigo/node-highcharts-exporter/issues"
   },
+  "devDependencies": {
+    "grunt": "0.4.2",
+    "grunt-cli": "0.1.11",
+    "grunt-contrib-jshint": "0.6.4",
+    "grunt-jasmine-node": "~0.1.0"
+  },
   "dependencies": {
     "svg2png": "~1.0.0",
     "pdfkit": "~0.2.6",

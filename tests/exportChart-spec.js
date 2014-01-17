@@ -1,23 +1,10 @@
-var nhe               = require('../lib/node-highcharts-exporter/main.js'),
-    fs                = require('fs'),
-    chart1SVG         = fs.readFileSync(__dirname + '/chart1.svg'),
-    rmdir             = require('rimraf'),
-    testProcessingDir = './.' + '/test_exports';
+'use strict';
 
-describe('Config options', function(){
-
-    it('should complain when given an invalid config option to set', function () {
-        expect(function(){nhe.config.set('notAnOption', 'not an option value')}).toThrow();
-    });
-
-    it('should allow setting of processing directory', function () {
-        var defaultProcessingDir = './.' + '/highcharts_exports';
-        expect(nhe.config.get().processingDir).toBe(defaultProcessingDir);
-
-        nhe.config.set('processingDir', testProcessingDir);
-        expect(nhe.config.get().processingDir).toBe(testProcessingDir);
-    });
-});
+var testsConfig = require('./testsConfig.json'),
+    nhe         = require(testsConfig.mainPath),
+    fs          = require('fs'),
+    chart1SVG   = fs.readFileSync(__dirname + '/chart1.svg'),
+    rmdir       = require('rimraf');
 
 describe('Chart exporting', function () {
 
