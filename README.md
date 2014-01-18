@@ -3,19 +3,24 @@ node-highcharts-exporter
 
 [![Build Status](https://travis-ci.org/coderigo/node-highcharts-exporter.png?branch=master)](https://travis-ci.org/coderigo/node-highcharts-exporter)
 
-  A basic [Node.js](http://nodejs.org) [Highcharts](http://www.highcharts.com/) export server converting the SVG sent by Highcharts's [export module](http://www.highcharts.com/docs/export-module/export-module-overview) into `svg` (i.e. unaltered), `jpeg, png, or pdf`.
+  A basic [Node.js](http://nodejs.org) [Highcharts](http://www.highcharts.com/) export module for converting the SVG sent by Highcharts's [export module](http://www.highcharts.com/docs/export-module/export-module-overview) into `svg` (i.e. unaltered), `jpeg, png, or pdf`.
 
 ## Usage
 
   In your node app file:
 
 ```js
+// Assume this is executed inside the POST handler for a server
+// running on http://localhost:3000/export
 var nhe = require('node-highcharts-exporter');
 nhe.exportChart(highchartsExportRequest, function(error, exportedChartInfo){
     if(error){
         console.log('Uh oh!',error.message);
+        // Can send error message back to client
     } else{
         console.log('Exported chart. Here are the deets:', exportedChartInfo);
+        // Can send exported chart back to client here. The chart's
+        // path is in exportedChartInfo.filePath
     }
 });
 ```
@@ -62,7 +67,7 @@ new Highcharts.Chart({
         fileName  : 'myChart',     // The name of the chart
         file      : 'myChart.png', // The name of the chart plus its extension
         type      : 'png',         // The type of file (png,svg,pdf,jpeg)
-        parentDir : 'path/to/processingDir/requestHash', // The directory where the file has been stored
+        parentDir : 'path/to/processingDir/exportRequestHash', // The directory where the file has been stored
         filePath  : 'path/to/processingDir/exportRequestHash/myChart.png' // Absolute path to exported chart
     }
 ```
