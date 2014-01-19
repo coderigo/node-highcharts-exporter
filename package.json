@@ -1,14 +1,14 @@
 {
   "name": "node-highcharts-exporter",
-  "version": "0.0.4",
-  "description": "A basic Node.js Highcharts export server",
+  "version": "0.0.5",
+  "description": "A basic Node.js package to export SVG sent by Highcharts into SVG, PNG, PDF, or JPG",
   "main": "lib/node-highcharts-exporter/main.js",
   "directories": {
     "example": "example",
     "test": "tests"
   },
   "scripts": {
-    "test": "jasmine-node tests/"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",

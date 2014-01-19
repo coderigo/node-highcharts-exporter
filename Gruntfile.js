@@ -32,5 +32,5 @@ module.exports = function(grunt) {
     });
 
     // Specify task order and that
-    grunt.registerTask('default', ['jshint', 'jasmine_node']);
+    grunt.registerTask('test', ['jshint', 'jasmine_node']);
 };
