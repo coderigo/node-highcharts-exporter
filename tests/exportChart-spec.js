@@ -47,7 +47,7 @@ describe('Chart exporting', function () {
 
                 done();
             });
-        }, 5000);
+        }, 6000); // Exporting can take a bit long depending on host, hence 6s timeout
     };
 
     /**
@@ -58,6 +58,7 @@ describe('Chart exporting', function () {
         {extension : 'svg' , type : 'svg' , mediaType : 'image/svg+xml'},
         {extension : 'png' , type : 'png' , mediaType : 'image/png'},
         {extension : 'jpeg', type : 'jpeg', mediaType : 'image/jpeg'},
+        {extension : 'jpg' , type : 'jpg' , mediaType : 'image/jpg'},
         {extension : 'pdf' , type : 'pdf' , mediaType : 'application/pdf'}
     ];
 
@@ -69,5 +70,29 @@ describe('Chart exporting', function () {
     exportFormats.forEach(function(format){
         testExport(format);
     });
+
+    /**
+     * Tests throwing an error when requested an unsuported format
+     * @return {void} Nothing
+     */
+    it('should complain when requested an unsupported format to export', function (done) {
+        var unsupportedFormat    = 'gif';
+        var badHighchartsRequest = {
+            type     : 'image/' + unsupportedFormat,
+            filename : 'Unsupported',
+            scale    : 2,
+            svg      : chart1SVG
+        };
+
+        nhe.exportChart(badHighchartsRequest, function(error, exportedChartInfo){
+
+            expect(exportedChartInfo).toBe(null);
+            expect(error).toBeDefined();
+            expect(error.message).toBe('Invalid export format requested: ' + unsupportedFormat + '. Currently supported outputFormats: svg+xml, pdf, jpeg, jpg, and png.');
+
+            done();
+
+        });
+    }, 6000);
 
 });
