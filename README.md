@@ -3,7 +3,7 @@ node-highcharts-exporter
 
 [![Build Status](https://travis-ci.org/coderigo/node-highcharts-exporter.png?branch=master)](https://travis-ci.org/coderigo/node-highcharts-exporter)
 
-  A basic [Node.js](http://nodejs.org) [Highcharts](http://www.highcharts.com/) export module for converting the SVG sent by Highcharts's [export module](http://www.highcharts.com/docs/export-module/export-module-overview) into `svg` (i.e. unaltered), `jpeg, png, or pdf`.
+  A basic [Node.js](http://nodejs.org) [Highcharts](http://www.highcharts.com/) export module for converting the SVG sent by Highcharts's [export module](http://www.highcharts.com/docs/export-module/export-module-overview) into `svg` (i.e. unaltered), `jpeg`, `png`, or `pdf`.
 
 ## Usage
 
@@ -24,7 +24,7 @@ nhe.exportChart(highchartsExportRequest, function(error, exportedChartInfo){
     }
 });
 ```
-  In your client-side Higcharts code:
+  In your client-side Highcharts code:
 ```js
 new Highcharts.Chart({
     // some chart options
@@ -32,29 +32,29 @@ new Highcharts.Chart({
         url: 'http://localhost:3000/export'
     }
     // more chart options
-};
+});
 ```
 
 ## Demo
 
   Start a server:
 
-    $ cd example;
-    $ npm install; // Installs demo dependencies
-    $ node server.js;
+    $ cd example;     // The example directory inside this module
+    $ npm install;    // Installs demo dependencies
+    $ node server.js; // Start the demo server listening on 'http://localhost:3000'
 
   Now open `example/demo.html` in the browser and export the demo chart to any format.
 
 
 ## Installation
 
-  One of its dependencies is *netpbm utilities*. As described by [node-netpbm](https://npmjs.org/package/netpbm), this needs some minor setup outside of `npm` and node. On OSX, a simple `brew install netpbm` took care of the installation. After that, you can proceed to:
+  One of its dependencies is *netpbm utilities* for conversion to `jpeg`. As described by [node-netpbm](https://npmjs.org/package/netpbm), this needs some minor setup outside of `npm` and node. At this juncture, `node-netpbm` works on most *nix and OSX OSes, but no guarantees are made for Windows. It's not the end of the game, however, if you're running this on Windows and it doesn't work if your use case can do without `jpeg` exporting as it should work with `png` and `pdf` still. On OSX, a simple `brew install netpbm` takes care of the installation. After that, you can proceed to:
 
     $ npm install -g node-highcharts-exporter
 
 ## Methods
 
-  * **exportChart(exportRequest, callback)**: `exportRequest` is the request POSTed by Highcharts as described [here](http://www.highcharts.com/docs/export-module/export-module-overview). `callback` is a function with two parameters `error` and `exportedChartInfo` as below:
+  * **exportChart(exportRequest, callback)**: `exportRequest` is the request `POST`ed by Highcharts as described [here](http://www.highcharts.com/docs/export-module/export-module-overview). `callback` is a function with two parameters `error` and `exportedChartInfo` as below:
 
 ```js
     // error object
@@ -82,12 +82,12 @@ new Highcharts.Chart({
 
 ## Limitations
 
-* Handles only SVG, not JSON for rendering server-side like other solutions out there.
-* Does exporting a quick and dirty way by converting everything that is not SVG to PNG first then to PDF or JPEG.
+* Handles only `SVG`, not `JSON` for rendering server-side like other solutions out there.
+* Does exporting a quick and dirty way by converting everything that is not `SVG` to `PNG` first then to `PDF` or `JPEG`.
 
 ## To-dos
 
 * Handle chart sizes neatly to fit into PDF (if too big at the moment they'll get truncated)
-* Make an `exportChartSync`
+* Make an `exportChartSync` (if there is interest. It's hard with dependencies only having async methods themselves)
 * Enable a logging scheme (?)
 * Investigate JSON-based server-side rendering as an option
