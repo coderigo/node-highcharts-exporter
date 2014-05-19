@@ -3,6 +3,8 @@ node-highcharts-exporter
 
 [![Build Status](https://travis-ci.org/coderigo/node-highcharts-exporter.png?branch=master)](https://travis-ci.org/coderigo/node-highcharts-exporter)
 
+[![NPM](https://nodei.co/npm/node-highcharts-exporter.png?downloads=true)](https://nodei.co/npm/node-highcharts-exporter/)
+
   A basic [Node.js](http://nodejs.org) [Highcharts](http://www.highcharts.com/) export module for converting the SVG sent by Highcharts's [export module](http://www.highcharts.com/docs/export-module/export-module-overview) into `svg` (i.e. unaltered), `jpeg`, `png`, or `pdf`.
 
 ## Usage
